@@ -10,7 +10,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var dbFile string = "./test_db.db"
+var dbFile string = ":memory:"
 
 func Connection() *gorm.DB {
 	db, err := gorm.Open(sqlite.Open(dbFile), &gorm.Config{})
