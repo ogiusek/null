@@ -6,10 +6,10 @@ import (
 )
 
 func (o *Nullable[T]) MarshalJSON() ([]byte, error) {
-	if !o.Ok {
+	if !o.ok {
 		return nil, nil
 	}
-	return json.Marshal(o.Val)
+	return json.Marshal(o.val)
 }
 
 func (o *Nullable[T]) UnmarshalJSON(data []byte) error {

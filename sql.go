@@ -6,10 +6,10 @@ import (
 )
 
 func (v Nullable[T]) Value() (driver.Value, error) {
-	if !v.Ok {
+	if !v.ok {
 		return nil, nil
 	}
-	return v.Val, nil
+	return v.val, nil
 }
 
 func (v *Nullable[T]) Scan(value interface{}) error {
@@ -18,7 +18,7 @@ func (v *Nullable[T]) Scan(value interface{}) error {
 		return nil
 	}
 
-	scanner, ok := any(v.Val).(scanner)
+	scanner, ok := any(v.val).(scanner)
 	if ok {
 		return scanner.Scan(value)
 	}

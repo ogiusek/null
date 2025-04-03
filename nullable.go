@@ -1,19 +1,23 @@
 package null
 
 type Nullable[T any] struct {
-	Val T
-	Ok  bool
+	val T
+	ok  bool
 }
 
 func New[T any](value T) Nullable[T] {
 	return Nullable[T]{
-		Val: value,
-		Ok:  true,
+		val: value,
+		ok:  true,
 	}
 }
 
 func Null[T any]() Nullable[T] {
 	return Nullable[T]{
-		Ok: false,
+		ok: false,
 	}
+}
+
+func (n Nullable[T]) Ok() (val T, ok bool) {
+	return n.val, n.ok
 }
